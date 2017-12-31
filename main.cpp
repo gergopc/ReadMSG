@@ -12,6 +12,20 @@
 
 using namespace std;
 
+char decode(int num){
+int sum=0;
+ int rem;
+ int i=1;
+ int szr=10;
+ while(num>0)
+ {
+ rem=num%szr;
+ sum=sum+(rem*i);
+ i*=5;
+ num=num/szr;
+ }
+ return (char)sum;
+}
 int main()
 {
 ifstream fin("in.msg");
@@ -21,7 +35,11 @@ while(fin.eof()==false){
     bool read;
     bool un_mode;
     bool msg_mode;
-    cout<<a;
+    char usr[1024];
+    char msg[1024];
+    int ui=0;
+    int mi=0;
+    //cout<<a;
     int p=0;
     int sector=999;
     string sec;
@@ -32,10 +50,14 @@ while(fin.eof()==false){
     sector=atoi(sec.c_str());
     if(read==true){
      if(un_mode){
-
+            cout<<decode(sector);
+     //usr[ui]=decode(sector);
+     ui++;
      }
      if(msg_mode){
-
+     //msg[mi]=decode(sector);
+     mi++;
+     cout<<decode(sector);
      }
 
     }
@@ -50,6 +72,8 @@ while(fin.eof()==false){
     if(sector==STOPMESSAGE) msg_mode=false;
 
     }
+string username(usr);
+string message(msg);
 cout<<username<<": "<<message;
 fin>>a;
 }
