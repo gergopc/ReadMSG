@@ -30,6 +30,15 @@ while(fin.eof()==false){
     sec=a.substr(p, 3);
     p+=3;
     sector=atoi(sec.c_str());
+    if(read==true){
+     if(un_mode){
+
+     }
+     if(msg_mode){
+
+     }
+
+    }
     if(sector==START) read=true;
     if(sector==STOP){
             read=false;
@@ -39,10 +48,7 @@ while(fin.eof()==false){
     if(sector==STOPUSERNAME) un_mode=false;
     if(sector==STARTMESSAGE) msg_mode=true;
     if(sector==STOPMESSAGE) msg_mode=false;
-    if(read==true){
 
-
-    }
     }
 cout<<username<<": "<<message;
 fin>>a;
